@@ -7,8 +7,8 @@ player::player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	row = 0;
 	
 	faceRight = true;
-	body.setSize(sf::Vector2f(100.0f, 150.0f)); //konstruktor gracza (X/Y)
-	body.setOrigin(body.getSize() / 2.0f);
+	body.setSize(sf::Vector2f(53.0f, 75.0f)); //konstruktor gracza (X/Y)
+	
 	body.setPosition(200.0f, 200.0f);
 	
 	
@@ -26,18 +26,22 @@ void player::Update(float delatTime)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) //poruszanie siê
 	{
+		mov = 1;
 		movement.x -= speed * delatTime;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
-	{
+	{	
+		mov = 2;
 		movement.x += speed * delatTime;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
 	{
+		mov = 3;
 		movement.y -= speed * delatTime;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
 	{
+		mov = 4;
 		movement.y += speed * delatTime;
 	}
 

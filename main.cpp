@@ -3,7 +3,7 @@
 #include "player.h"
 #include "platform.h"
 #include "tile.h"
-
+#include <iomanip>
 int main()
 {
 	
@@ -12,25 +12,28 @@ int main()
 	//player.setFillColor(sf::Color::Yellow); //wype³nienie kolorem
 	
 	sf::Texture playerTexture;
-	playerTexture.loadFromFile("duzotuxow.png");
+	playerTexture.loadFromFile("duzotuxow2.png");
 	
-
-
-	player player(&playerTexture, sf::Vector2u(3, 9), 0.3f, 200.0f);
+	sf::Font font;
+	font.loadFromFile("arial.ttf");
+	
+	
+	player player(&playerTexture, sf::Vector2u(3, 2), 0.3f, 200.0f);
 	float deltaTime = 0.0f;
 	sf::Clock clock;
-	Tile tile(50, 50, 0);
+	float totalTime = 0;
+	Tile tile_movement(256, 256, 1);
 	
 	std::vector<Tile> tiles;
 	int array[8][6] = { 
-	{0,0,0,0,0,0},
-	{0,0,0,0,0,0},
-	{0,0,0,0,0,0},
-	{0,0,0,0,0,0},
-	{0,0,0,0,0,0},
-	{0,1,0,0,0,0},
-	{0,0,0,0,1,0},
-	{0,0,0,0,0,0} };
+	{0,0,0,3,3,3},
+	{0,0,0,0,0,3},
+	{0,0,0,0,0,3},
+	{0,0,0,0,0,3},
+	{0,0,0,0,0,3},
+	{0,0,0,2,0,3},
+	{0,0,0,0,0,3},
+	{0,0,3,3,3,3} };
 	for (auto i = 0; i < 8; i++)
 	{
 		for (auto j = 0; j < 6; j++)
@@ -40,11 +43,8 @@ int main()
 	}
 	
 	
-	//platform platform1(nullptr, sf::Vector2f(400.0f, 200.0f), sf::Vector2f(500.0f, 200.0f));
 	
-	platform platform2(nullptr, sf::Vector2f(150.0f, 150.0f), sf::Vector2f(400.0f, 200.0f));
-	
-	platform platform3(nullptr, sf::Vector2f(150.0f, 150.0f), sf::Vector2f(800.0f, 200.0f));
+	//platform platform3(nullptr, sf::Vector2f(150.0f, 150.0f), sf::Vector2f(800.0f, 200.0f));
 
 
 	/*sf::Vector2u textureSize =playerTexture.getSize();
@@ -68,30 +68,75 @@ int main()
 		}
 		
 		player.Update(deltaTime);
-
-		//platform1.GetCollider().CheckCollider(player.GetCollider(), 0.0f);
-		platform2.GetCollider().CheckCollider(player.GetCollider(), 0.0f);
-		platform3.GetCollider().CheckCollider(player.GetCollider(), 1.0f);
-		platform3.GetCollider().CheckCollider(platform2.GetCollider(), 1.0f);
+		totalTime += deltaTime;
+		std::string totalTimeS = std::to_string(totalTime);
+		sf::Text text(totalTimeS, font);
+		text.setPosition(870, 100);
+		text.setCharacterSize(30);
+		text.setStyle(sf::Text::Bold);
+		text.setFillColor(sf::Color::White);
+		text.setOutlineColor(sf::Color::Black);
+		text.setOutlineThickness(1);
+		
 		window.clear(sf::Color(150,150,150)); //czyszczenie bufora
-		for (auto tile : tiles) {
+		/*for (auto tile : tiles) {
 			if (platform2.body.getGlobalBounds().intersects(tile.rect.getGlobalBounds()) && tile.tile_type==1){
 				std::cout << "dziala";
 				
 			}
 			window.draw(tile.rect);
-		}
-		player.Draw(window); 
+		}*/
 		
+		if(tile_movement.tile_type == 1)
+			{
+			tile_movement.move_tile(player);
+			}
+		
+		//window.draw(tile_movement.rect);
+		for(auto tile : tiles)
+				{
+			window.draw(tile.rect);
+		}
+		
+		for (auto& tile : tiles) {
+					
+				if(tile.tile_type == 3 && player.body.getGlobalBounds().intersects(tile.rect.getGlobalBounds()))
+				{
+					tile.collision_player(player);
+					std::cout << "dziala" << std::endl;
+				}
+			if(tile.tile_type == 3 && tile_movement.rect.getGlobalBounds().intersects(tile.rect.getGlobalBounds()))
+				{
+				tile_movement.collision_tile(player);
+				
+				std::cout << "kolzija tile-tile dziala" << std::endl;
+				}
 
-		//rysowanie gracza
-		//platform1.Draw(window);
-		platform2.Draw(window);
-		platform3.Draw(window);
-
+				tile.center();
+				tile_movement.center();
+			 if(tile.tile_type == 2 && tile.center_x == tile_movement.center_x && tile.center_y == tile_movement.center_y)
+			 	{
+				std::cout << " Runda zaje³a Ci : "<< totalTime << std::endl;
+			 	std::cout << "Koniec gry spierdalaj dziadzie" << std::endl;
+			 	std::cout << "Press enter to exit!\n";
+			 	
+			 	std::cin.ignore();
+			 	window.close();
+		 	}
+			
+		}
+		
+		
+		
+		window.draw(tile_movement.rect);
+		window.draw(text);
+		player.Draw(window);
+		
+	
 		window.display();
 
 	}
 
+	
 	return 0;
 }
