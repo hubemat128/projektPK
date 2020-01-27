@@ -1,4 +1,15 @@
-﻿  main.cpp
+﻿  animation.cpp
+C:\Users\huber\source\repos\projektPK\animation.cpp(10,38): warning C4244: "=": konwersja z "float" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+C:\Users\huber\source\repos\projektPK\animation.cpp(11,39): warning C4244: "=": konwersja z "float" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+  main.cpp
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\xmemory(671,103): warning C4244: "argument": konwersja z "_Ty" do "float", możliwa utrata danych
           with
           [
@@ -23,5 +34,21 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
           [
               _Ty=int
           ]
-C:\Users\huber\source\repos\projektPK\main.cpp(61): message : zobacz odwołanie do kompilowanego tworzenia wystąpienia „void std::vector<Tile,std::allocator<Tile>>::emplace_back<int,int,int&>(int &&,int &&,int &)” funkcji szablon
+C:\Users\huber\source\repos\projektPK\main.cpp(57): message : zobacz odwołanie do kompilowanego tworzenia wystąpienia „void std::vector<Tile,std::allocator<Tile>>::emplace_back<int,int,int&>(int &&,int &&,int &)” funkcji szablon
+  player.cpp
+  text.cpp
+C:\Users\huber\source\repos\projektPK\text.cpp(4,23): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\huber\source\repos\projektPK\text.cpp(4,20): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  tile.cpp
+C:\Users\huber\source\repos\projektPK\tile.cpp(63,34): warning C4244: "=": konwersja z "T" do "int", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\huber\source\repos\projektPK\tile.cpp(64,34): warning C4244: "=": konwersja z "T" do "int", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+  Generowanie kodu...
   Project2.vcxproj -> C:\Users\huber\source\repos\projektPK\Debug\Project2.exe
