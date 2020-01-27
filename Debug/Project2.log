@@ -23,5 +23,5 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
           [
               _Ty=int
           ]
-C:\Users\huber\source\repos\projektPK\main.cpp(41): message : zobacz odwołanie do kompilowanego tworzenia wystąpienia „void std::vector<Tile,std::allocator<Tile>>::emplace_back<int,int,int&>(int &&,int &&,int &)” funkcji szablon
+C:\Users\huber\source\repos\projektPK\main.cpp(61): message : zobacz odwołanie do kompilowanego tworzenia wystąpienia „void std::vector<Tile,std::allocator<Tile>>::emplace_back<int,int,int&>(int &&,int &&,int &)” funkcji szablon
   Project2.vcxproj -> C:\Users\huber\source\repos\projektPK\Debug\Project2.exe

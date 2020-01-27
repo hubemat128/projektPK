@@ -2,7 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include "animation.h"
 #include "collider.h"
-class player
+
+class player 
 {
 public:
 	player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed);

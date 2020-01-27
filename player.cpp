@@ -13,7 +13,7 @@ player::player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	
 	
 	body.setTexture(texture); //ladowanie tekstury
-
+	
 }
 
 player::~player()
@@ -29,17 +29,17 @@ void player::Update(float delatTime)
 		mov = 1;
 		movement.x -= speed * delatTime;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
 	{	
 		mov = 2;
 		movement.x += speed * delatTime;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
 	{
 		mov = 3;
 		movement.y -= speed * delatTime;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
 	{
 		mov = 4;
 		movement.y += speed * delatTime;

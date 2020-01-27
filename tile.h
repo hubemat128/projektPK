@@ -17,6 +17,7 @@ public:
 	sf::Texture texture;
 	sf::RectangleShape rect;
 	sf::Sprite sprite;
+	
 
 };
 
