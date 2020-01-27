@@ -10,16 +10,12 @@ int main()
 {
 	
 	sf::RenderWindow window(sf::VideoMode(1024, 768), "Sokoban",sf::Style::Close | sf::Style::Titlebar); //stworzenie okna gry
-	//sf::RectangleShape player(sf::Vector2f(100.0f, 150.0f)); //konstruktor gracza (X/Y)
-	//player.setFillColor(sf::Color::Yellow); //wype³nienie kolorem
 	
 	sf::Texture playerTexture; // tekstura gracza
 	playerTexture.loadFromFile("sprites/duzotuxow2.png");
 	
 	sf::Texture crateTexture; //tekstura pudelka-popychadelka
 	crateTexture.loadFromFile("sprites/crate.png");
-	//sf::Font font;
-	//font.loadFromFile("arial.ttf");
 	std::fstream wynik; 
 	
 	wynik.open("wynik/wynik.txt", std::ios::out | std::ios::app);//zapis do pliku
@@ -65,13 +61,7 @@ int main()
 	
 	
 	//platform platform3(nullptr, sf::Vector2f(150.0f, 150.0f), sf::Vector2f(800.0f, 200.0f));
-
-
-	/*sf::Vector2u textureSize =playerTexture.getSize();
-	textureSize.x /= 3;
-	textureSize.y /= 9;
-	
-	player.setTextureRect(sf::IntRect(textureSize.x * 2, textureSize.y * 8, textureSize.x, textureSize.y)); */
+	//player.setTextureRect(sf::IntRect(textureSize.x * 2, textureSize.y * 8, textureSize.x, textureSize.y)); */
 	
 	text timer(870, 50);
 	timer.loadFont();
@@ -126,37 +116,27 @@ int main()
 		totalTime += deltaTime;
 		tile_movement.sprite.setPosition(tile_movement.rect.getPosition());
 
-		std::string totalTimeS = std::to_string(totalTime);
+		std::string totalTimeS = std::to_string(totalTime); //timer
 		if (endgame != true)
 		{
 			timer.setString(totalTimeS);
 		}
 
-		//sf::Text text(totalTimeS, font);
+		
 
 
 		window.clear(sf::Color(150, 150, 150)); //czyszczenie bufora
-		/*for (auto tile : tiles) {
-			if (platform2.body.getGlobalBounds().intersects(tile.rect.getGlobalBounds()) && tile.tile_type==1){
-				std::cout << "dziala";
-
-			}
-			window.draw(tile.rect);
-		}*/
+	
 
 		if (tile_movement.tile_type == 1)
 		{
-			tile_movement.move_tile(player);
+			tile_movement.move_tile(player); //poruszanie sie obiektu
 		}
 
-		//window.draw(tile_movement.rect);
-		//for(auto tile : tiles)
-			//	{
-			//window.draw(tile.rect);
-		//}
+	
 
 
-		for (auto& tile : tiles) {
+		for (auto& tile : tiles) { //kolizje
 
 			if (tile.tile_type == 3 && player.body.getGlobalBounds().intersects(tile.rect.getGlobalBounds()))
 			{
@@ -170,22 +150,19 @@ int main()
 				//std::cout << "kolzija tile-tile dziala" << std::endl;
 			}
 
-			tile.center();
+			tile.center(); //obliczanie srodkow obiektow
 			tile_movement.center();
-			if (tile.tile_type == 2 && tile.center_x == tile_movement.center_x && tile.center_y == tile_movement.center_y)
+			if (tile.tile_type == 2 && tile.center_x == tile_movement.center_x && tile.center_y == tile_movement.center_y) //koniec gry w momencie nalozenia sie dwoch srodkow
 			{
 				endText.setString(" Runda zajela Ci : " + totalTimeS + "\n" + " Nacisnij Enter aby wyjsc!");
 				tile.rect.setPosition(tile.rect.getPosition().x - 1, tile.rect.getPosition().y - 1);
-				//std::cout << " Runda zajela Ci : "<< totalTime << std::endl;
-				//std::cout << "Press enter to exit!\n";
-			
-				wynik << " Twoj czas : " + totalTimeS + "\n" ;
+				wynik << " Twoj czas : " + totalTimeS + "\n" ; //zapis czasu do pliku
 				wynik.close();
 				
 				
-				endgame = true;
+				endgame = true; // ustawienie konca gry
 			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) //zamkniecia okna
 			{
 				window.draw(endText.tekst);
 				window.close();
@@ -203,7 +180,7 @@ int main()
 		window.draw(timer.tekst);
 		window.draw(endText.tekst);
 		player.Draw(window);
-		if (endgame == true)
+		if (endgame == true) //jesli gra zostala zakonczona, pojawia sie ekran koncowy
 		{
 			window.clear(sf::Color::Blue);
 			window.draw(endText.tekst);

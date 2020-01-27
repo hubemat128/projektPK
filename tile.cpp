@@ -4,7 +4,7 @@
 Tile::Tile(float x, float y, int tiletype)
 {
 	
-	tile_type = tiletype;
+	tile_type = tiletype; //typy odpowiednich blokow
 	if (tile_type == 0)
 	{
 		rect.setSize(sf::Vector2f(64, 64));
@@ -58,17 +58,17 @@ Tile::Tile(float x, float y, int tiletype)
 	}
 
 }
-void Tile::center()
+void Tile::center() //wyznaczanie srodka
 {
 	center_x = rect.getPosition().x + 32;
 	center_y = rect.getPosition().y + 32;		
 }
-void Tile::move_tile(player player)
+void Tile::move_tile(player player) //poruszanie sie obiektu
 {
 	if(player.body.getGlobalBounds().intersects(rect.getGlobalBounds()) && player.mov == 1) // a
 	{
 		
-		rect.setPosition(rect.getPosition().x - 8, rect.getPosition().y);
+		rect.setPosition(rect.getPosition().x - 8, rect.getPosition().y);  //popchniecie w wybranej plaszczyznie
 	}
 	
 	if(player.body.getGlobalBounds().intersects(rect.getGlobalBounds()) && player.mov == 2) //d
@@ -85,7 +85,7 @@ void Tile::move_tile(player player)
 		rect.setPosition(rect.getPosition().x, rect.getPosition().y +8);
 	}
 }
-void Tile::collision_player(player& player)
+void Tile::collision_player(player& player) //kolizja gracza wzgledem sciany
 {
 
 	if ( player.mov == 1) // a
@@ -108,7 +108,7 @@ void Tile::collision_player(player& player)
 		player.body.move(0, -1);
 	}
 	
-}void Tile::collision_tile( player& player)
+}void Tile::collision_tile( player& player) //kolizja gracza z obiektem ruszajacym sie wzgledem sciany
 {
 
 	if (player.mov == 1) // a
