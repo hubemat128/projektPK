@@ -7,10 +7,10 @@ Tile::Tile(float x, float y, int tiletype)
 	tile_type = tiletype; //typy odpowiednich blokow
 	if (tile_type == 0)
 	{
-		rect.setSize(sf::Vector2f(64, 64));
-		rect.setPosition(sf::Vector2f(x, y));
+		rect.setSize(sf::Vector2f(64, 64)); // wielkosc
+		rect.setPosition(sf::Vector2f(x, y)); //pozycja
 		//sprite.setPosition(rect.getPosition());
-		rect.setFillColor(sf::Color(130,130,130));
+		rect.setFillColor(sf::Color(130,130,130)); //kolor, obecnie jest juz tekstura
 		
 		//rect.setOutlineColor(sf::Color::Black);
 		//rect.setOutlineThickness(2);
@@ -68,7 +68,7 @@ void Tile::move_tile(player player) //poruszanie sie obiektu
 	if(player.body.getGlobalBounds().intersects(rect.getGlobalBounds()) && player.mov == 1) // a
 	{
 		
-		rect.setPosition(rect.getPosition().x - 8, rect.getPosition().y);  //popchniecie w wybranej plaszczyznie
+		rect.setPosition(rect.getPosition().x - 8, rect.getPosition().y);  //popchniecie w wybranej plaszczyznie +/- odpowiednia ilosc pikseli
 	}
 	
 	if(player.body.getGlobalBounds().intersects(rect.getGlobalBounds()) && player.mov == 2) //d

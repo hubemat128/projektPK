@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="animation">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAJAAAgAAAAAAEAAIAAAQEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>animation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="collider">
+    <Position X="10.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAIAAAAAAAAIAAAQAAQBAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>collider.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="platform">
+    <Position X="12" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEgAAAAAAAAAQAQAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>platform.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="player">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAgAQAAAABIASAQAAAwABAAAAAAAAAAA=</HashCode>
+      <FileName>player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="text">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAABABAAAAAAAAIAAAACAAAAAA=</HashCode>
+      <FileName>text.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tile">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAQIAAAAAAAAAAAAAIAYAABAAAgAAAAAAAIAAAQA=</HashCode>
+      <FileName>tile.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

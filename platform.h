@@ -7,8 +7,8 @@ public:
 	platform(sf::Texture* texture, sf::Vector2f size, sf::Vector2f position);
 	~platform();
 
-	void Draw(sf::RenderWindow& window);
-	collider GetCollider() { return collider(body); }
+	void Draw(sf::RenderWindow& window); //rysowanie platformy
+	collider GetCollider() { return collider(body); } //zwrocenie ciala
 	sf::RectangleShape body;
 
 
